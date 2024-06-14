@@ -6,7 +6,8 @@ import { mockUsers } from "./utils/constants.mjs";
 import passport from "passport";
 import mongoose from "mongoose";
 import MongoStore from "connect-mongo";
-import "./strategies/local-strategy.mjs";
+// import "./strategies/local-strategy.mjs";
+import "./strategies/discord-strategy.mjs";
 
 const app = express();
 
@@ -53,6 +54,17 @@ app.post("/api/auth/logout", (request, response) => {
     response.send(200);
   });
 });
+
+app.get("/api/auth/discord", passport.authenticate("discord"));
+app.get(
+  "/api/auth/discord/redirect",
+  passport.authenticate("discord"),
+  (request, response) => {
+    console.log(request.session);
+    console.log(request.user);
+    response.sendStatus(200);
+  }
+);
 
 const PORT = process.env.PORT || 3000;
 
