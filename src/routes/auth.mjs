@@ -34,6 +34,8 @@ router.get(
   }
 );
 
+export default router;
+
 // app.get("/", (request, response) => {
 //   console.log(request.session.id);
 //   request.session.visited = true;
