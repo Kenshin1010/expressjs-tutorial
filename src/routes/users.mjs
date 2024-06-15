@@ -1,16 +1,9 @@
 import { Router } from "express";
-import {
-  query,
-  validationResult,
-  checkSchema,
-  matchedData
-} from "express-validator";
-import { mockUsers } from "../utils/constants.mjs";
-import { createUserValidationSchema } from "../utils/validationSchemas.mjs";
-import { resolveIndexByUserId } from "../utils/middlewares.mjs";
-import { User } from "../mongoose/schemas/user.mjs";
-import { hashPassword } from "../utils/helpers.mjs";
+import { checkSchema, query, validationResult } from "express-validator";
 import { createUserHandler, getUserByIdHandler } from "../handlers/users.mjs";
+import { mockUsers } from "../utils/constants.mjs";
+import { resolveIndexByUserId } from "../utils/middlewares.mjs";
+import { createUserValidationSchema } from "../utils/validationSchemas.mjs";
 
 const router = Router();
 
